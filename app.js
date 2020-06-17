@@ -12,12 +12,16 @@ const render = require("./lib/htmlRenderer");
 
 //-------------------------------------------------------------------------------------
 
+//Define employee ID number.
 let ID = 1;
 
+
+//Define manager properties.
 async function main() {
     console.log(`[main] Starting...`)
     const team = [];
 
+    //Question prompts regarding the manager position.
     const managerData = await inquirer.prompt([
     {   
         name: "name", 
@@ -41,6 +45,11 @@ async function main() {
     }
     ])
 }
+
+//Information gathered from the question prompts are pushed onto the team array to form the manager object.
+team.push (new Manager(managerData.name, ID++, managerData.email, managerData.officeNumber, managerData.count))
+
+
 
 
 // Write code to use inquirer to gather information about the development team members,
