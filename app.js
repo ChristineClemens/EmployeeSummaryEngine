@@ -44,42 +44,79 @@ async function main() {
         message: "How many subordinates do they have?"
     }
     ])
-}
 
-//Information gathered from the question prompts are pushed onto the team array to form the manager object.
-team.push (new Manager(managerData.name, ID++, managerData.email, managerData.officeNumber, managerData.count))
+    //Information gathered from the question prompts are pushed onto the team array to form the manager object.
+    team.push (new Manager(managerData.name, ID++, managerData.email, managerData.officeNumber, managerData.count))
 
-for (let userCount = 1; userCount <= managerData.count; userCount++) {
-    
-    const user = await inquirer.prompt([
-    {
-        name: "type",
-        type: "list",
-        message: `For person ${userCount}/${managerData.name}`,
-        choices: ["Intern", "Engineer"] 
-    }
-    ])
 
-    if (user.type == "Engineer") {
-        const userData = await inquirer.prompt([
-            {   
-                name: "name", 
-                type: "input",
-                message: "What is the name of the engineer?" 
-            },
+    //For loop to cycle through team members to determine their role and requirements.
+    for (let userCount = 1; userCount <= managerData.count; userCount++) {
+        
+        const user = await inquirer.prompt([
             {
-                name: "email", 
-                type: "input", 
-                message: "What is the engineer's email address?"
-            },
-            {
-                name: "gitHub", 
-                type: "input", 
-                message: "What is the manager's gitHub account URL?"
-            },
+                name: "type",
+                type: "list",
+                message: `For person ${userCount}/${managerData.name}`,
+                choices: ["Intern", "Engineer"] 
+            }
         ])
-    }
+
+        //Define properties if the selected option is "Engineer".
+        if (user.type == "Engineer") {
+            const userData = await inquirer.prompt([
+                {   
+                    name: "name", 
+                    type: "input",
+                    message: "What is the name of the engineer?" 
+                },
+                {
+                    name: "email", 
+                    type: "input", 
+                    message: "What is the engineer's email address?"
+                },
+                {
+                    name: "gitHub", 
+                    type: "input", 
+                    message: "What is the manager's gitHub account URL?"
+                }
+            ]);
+            //Add a new Engineer and their property values to the existing team.
+            team.push(new Engineer(userData.name, ID++, userData.email, userData.gitHub));
+
+        //Define properties if the selected option is "Intern".
+        } else {
+            const userData = await inquirer.prompt ([
+                {   
+                    name: "name", 
+                    type: "input",
+                    message: "What is the name of the intern?" 
+                },
+                {
+                    name: "email", 
+                    type: "input", 
+                    message: "What is the intern's email address?"
+                },
+                {
+                    name: "school", 
+                    type: "input", 
+                    message: "What school does the intern attend?"
+                }
+            ]);
+            //Add a new Intern and their property values to the existing team.
+            team.push(new Intern(userData.name, ID++, userData.email, userData.school));
+        }
+    }    
+    //Render the team information in the HTML file.
+    const html = render(team);
+
+    //Write file to the output file. 
+    fs.writeFileSync (outputPath, html);
+    console.log(`File writing now completed and available in ${outputPath}.`)
 }
+
+//Call the main function in order to run the program.
+main();
+
 
 
 // Write code to use inquirer to gather information about the development team members,
