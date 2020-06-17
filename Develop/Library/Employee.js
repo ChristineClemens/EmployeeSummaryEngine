@@ -1,4 +1,6 @@
 // TODO: Write code to define and export the Employee class
+
+//Define Employee class information and methods.
 class Employee {
     constructor (name, id, email, role = "Employee") {
         this.id = id;
