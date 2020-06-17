@@ -19,3 +19,6 @@ class Employee {
         return this.role;
     }
 }
+
+//Make this information available to other files as a requirement.
+module.exports = Employee
