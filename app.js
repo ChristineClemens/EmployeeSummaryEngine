@@ -49,7 +49,37 @@ async function main() {
 //Information gathered from the question prompts are pushed onto the team array to form the manager object.
 team.push (new Manager(managerData.name, ID++, managerData.email, managerData.officeNumber, managerData.count))
 
+for (let userCount = 1; userCount <= managerData.count; userCount++) {
+    
+    const user = await inquirer.prompt([
+    {
+        name: "type",
+        type: "list",
+        message: `For person ${userCount}/${managerData.name}`,
+        choices: ["Intern", "Engineer"] 
+    }
+    ])
 
+    if (user.type == "Engineer") {
+        const userData = await inquirer.prompt([
+            {   
+                name: "name", 
+                type: "input",
+                message: "What is the name of the engineer?" 
+            },
+            {
+                name: "email", 
+                type: "input", 
+                message: "What is the engineer's email address?"
+            },
+            {
+                name: "gitHub", 
+                type: "input", 
+                message: "What is the manager's gitHub account URL?"
+            },
+        ])
+    }
+}
 
 
 // Write code to use inquirer to gather information about the development team members,
