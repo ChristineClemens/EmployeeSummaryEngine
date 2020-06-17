@@ -1,4 +1,3 @@
-1
 // TODO: Write code to define and export the Engineer class.  HINT: This class should inherit from Employee.
 
 //Require the Employee class properties.
@@ -16,4 +15,4 @@ class Engineer extends Employee {
 }
 
 //Make this information available to other files as a requirement.
-module.exports = Engineer
+module.exports = Engineer;
