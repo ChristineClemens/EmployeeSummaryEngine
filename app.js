@@ -1,6 +1,6 @@
-const Manager = require("./Library/Manager");
-const Engineer = require("./Library/Engineer");
-const Intern = require("./Library/Intern");
+const Manager = require("./Develop/Library/Manager");
+const Engineer = require("./Develop/Library/Engineer");
+const Intern = require("./Develop/Library/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
@@ -8,7 +8,7 @@ const fs = require("fs");
 const OUTPUT_DIR = path.resolve(__dirname, "Output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-const render = require("./Library/htmlRenderer");
+const render = require("./Develop/Library/htmlRenderer");
 
 //-------------------------------------------------------------------------------------
 
