@@ -6,7 +6,7 @@ const Employee = require("./Employee")
 //Define Manager class information and methods by extending those pre-existing in the Employee class.
 class Manager extends Employee {
     constructor(name, id, email, officeNumber ) {
-        super(name, id, email, 'Manager');
+        super(name, id, email, "Manager");
         this.officeNumber = officeNumber;
     }
     getOfficeNumber() {
