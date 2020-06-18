@@ -25,6 +25,6 @@ The objective of this assignment was to complete the app.js file in order to bui
 * Ensure that each team member should display: Name, Role, ID, and a Role-specific property.
 
 ### Example HTML Generated Team Page
-![alt text]()
+![alt text](https://github.com/ChristineClemens/EmployeeSummaryEngine/blob/master/Assets/SampleTeamPage.PNG?raw=true)
 
 *GitHub Repository:* https://github.com/ChristineClemens/EmployeeSummaryEngine
